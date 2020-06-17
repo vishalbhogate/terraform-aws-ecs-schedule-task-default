@@ -51,26 +51,6 @@ variable "launch_type" {
   description = "A set of launch types required by the task. The valid values are EC2 and FARGATE."
 }
 
-variable "container_port" {
-  default     = "8080"
-  description = "Port your container listens (used in the placeholder task definition)"
-}
-
-variable "port" {
-  default     = "80"
-  description = "Port for target group to listen"
-}
-
-variable "memory" {
-  default     = "512"
-  description = "Hard memory of the container"
-}
-
-variable "cpu" {
-  default     = "0"
-  description = "Hard limit for CPU for the container"
-}
-
 variable "container_definitions" {
   description = "A list of valid container definitions provided as a single valid JSON document."
 }
