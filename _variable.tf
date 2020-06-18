@@ -54,3 +54,13 @@ variable "launch_type" {
 variable "container_definitions" {
   description = "A list of valid container definitions provided as a single valid JSON document."
 }
+
+variable "network_mode" {
+  default     = "awsvpc"
+  description = "The Docker networking mode to use for the containers in the task"
+}
+
+variable "requires_compatibilities" {
+  default     = ["EC2"]
+  description = "A set of launch types required by the task. The valid values are EC2 and FARGATE."
+}
