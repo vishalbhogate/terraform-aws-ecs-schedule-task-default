@@ -17,7 +17,7 @@ resource aws_cloudwatch_event_target "ecs" {
 
   ecs_target {
     launch_type         = var.launch_type
-    task_count          = var.task_count
+    task_count          = tonumber("${var.task_count}")
     task_definition_arn = var.task_definition_arn
 
     network_configuration {
