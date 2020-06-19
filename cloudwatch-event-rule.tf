@@ -10,7 +10,7 @@ resource aws_cloudwatch_event_rule "ecs" {
 }
 
 resource aws_cloudwatch_event_target "ecs" {
-  target_id = "run-scheduled-id-${var.name}"
+  target_id = "ecs-scheduled-id-${var.name}"
   arn       = var.cluster_arn
   rule      = aws_cloudwatch_event_rule.ecs.name
   role_arn  = var.ecs_events_role_arn != "" ? join(",", var.ecs_events_role_arn, aws_iam_role.ecs.arn) : aws_iam_role.ecs.arn
