@@ -51,10 +51,6 @@ variable "launch_type" {
   description = "A set of launch types required by the task. The valid values are EC2 and FARGATE."
 }
 
-variable "container_definitions" {
-  description = "A list of valid container definitions provided as a single valid JSON document."
-}
-
 variable "network_mode" {
   default     = "awsvpc"
   description = "The Docker networking mode to use for the containers in the task"
@@ -64,3 +60,48 @@ variable "requires_compatibilities" {
   default     = ["EC2"]
   description = "A set of launch types required by the task. The valid values are EC2 and FARGATE."
 }
+
+variable "repository_name" {
+  description = "The name of the ECR Repository."
+}
+
+variable "memory" {
+  default     = "512"
+  description = "Hard memory of the container"
+}
+
+variable "cpu" {
+  default     = "0"
+  description = "Hard limit for CPU for the container"
+}
+
+variable "container_port" {
+  default     = "80"
+  description = "Port your container listens (used in the placeholder task definition)"
+}
+
+variable "host_port" {
+  default     = "80"
+  description = "The port number on the container instance to reserve for your container."
+}
+
+variable "protocol" {
+  default     = "tcp"
+  description = "The protocol used for the port mapping."
+}
+
+variable "entry_point" {
+  default     = ""
+  description = "The entry point that is passed to the container."
+}
+
+variable "command" {
+  default     = ""
+  description = "A string array representing the command that the container runs to determine if it is healthy."
+}
+
+variable "awslogs_group" {
+  default     = ""
+  description = "log group name to which the awslogs log driver sends its log streams"
+}
+
