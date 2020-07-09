@@ -4,6 +4,7 @@ resource aws_ecs_task_definition "ecs" {
   task_role_arn            = try(var.task_role_arn, null)
   network_mode             = var.network_mode
   cpu                      = var.cpu
+  memory                   = var.memory
   requires_compatibilities = var.requires_compatibilities
   container_definitions    = <<TASK_DEFINITION
 [
