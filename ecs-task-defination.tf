@@ -6,7 +6,7 @@ resource aws_ecs_task_definition "ecs" {
   cpu                      = var.requires_compatibilities == "FARGET" ? var.cpu : null
   memory                   = var.requires_compatibilities == "FARGET" ? var.memory : null
   requires_compatibilities = var.requires_compatibilities
-  container_definitions    = <<EOT
+  container_definitions    = <<TASK_DEFINITION
 [
     {
       "name": "${var.name}",
@@ -35,5 +35,5 @@ resource aws_ecs_task_definition "ecs" {
         }
     }
 ]
-EOT
+TASK_DEFINITION
 }
