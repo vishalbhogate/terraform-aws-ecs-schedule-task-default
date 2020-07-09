@@ -3,6 +3,8 @@ resource aws_ecs_task_definition "ecs" {
   execution_role_arn       = aws_iam_role.ecs_task_excution.arn
   task_role_arn            = try(var.task_role_arn, null)
   network_mode             = var.network_mode
+  cpu = var.requires_compatibilities == "FARGET" ? var.cpu : null
+  memory = var.requires_compatibilities == "FARGET" ? var.memory : null
   requires_compatibilities = var.requires_compatibilities
   container_definitions    = <<EOT
 [
