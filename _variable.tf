@@ -91,12 +91,12 @@ variable "protocol" {
 }
 
 variable "entry_point" {
-  default     = ""
+  default     = null
   description = "The entry point that is passed to the container."
 }
 
 variable "command" {
-  default     = ""
+  default     = null
   description = "A string array representing the command that the container runs to determine if it is healthy."
 }
 
