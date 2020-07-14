@@ -21,8 +21,6 @@ resource aws_ecs_task_definition "ecs" {
             "protocol": "${var.protocol}"
             }
         ],
-        "entryPoint": ["${var.entry_point}"],
-        "command": ["${var.command}"],
         "logConfiguration": 
         {
             "logDriver": "awslogs",
