@@ -100,11 +100,6 @@ variable "command" {
   description = "A string array representing the command that the container runs to determine if it is healthy."
 }
 
-variable "awslogs_group" {
-  default     = ""
-  description = "log group name to which the awslogs log driver sends its log streams"
-}
-
 variable "cluster_name" {
   default = "Name of existing ECS Cluster to deploy this app to"
 }
