@@ -27,7 +27,3 @@ data aws_security_group "security_group" {
 data aws_ecr_repository "selected" {
   name = local.workspace["repository_name"]
 }
-
-data "aws_cloudwatch_log_group" "selected" {
-  name = local.workspace["awslogs_group"]
-}
