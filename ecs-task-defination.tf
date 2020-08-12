@@ -26,7 +26,7 @@ resource aws_ecs_task_definition "ecs" {
             "logDriver": "awslogs",
             "options": 
             {
-                "awslogs-group": "/ecs/services/crm",
+                "awslogs-group": "${aws_cloudwatch_log_group.default.name}",
                 "awslogs-region": "${data.aws_region.current.name}",
                 "awslogs-stream-prefix": "${var.name}"
             }
