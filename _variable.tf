@@ -117,7 +117,3 @@ variable "cloudwatch_logs_retention" {
 variable "log_group" {
   description = "Log group name"
 }
-
-variable "execution_role_arn" {
-  description = "The ARN of IAM role that allows your Amazon ECS container execution."
-}
