@@ -14,7 +14,7 @@ resource aws_iam_role_policy_attachment "ecs_policy" {
 
 resource aws_iam_role_policy_attachment "ecs_policy_ssm" {
   role       = aws_iam_role.ecs.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMReadOnlyAccess"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMFullAccess"
 }
 
 resource aws_iam_role "ecs_task_excution" {
@@ -25,9 +25,4 @@ resource aws_iam_role "ecs_task_excution" {
 resource aws_iam_role_policy_attachment "ecs_task_policy" {
   role       = aws_iam_role.ecs_task_excution.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
-}
-
-resource aws_iam_role_policy_attachment "ecs_task_policy_ssm" {
-  role       = aws_iam_role.ecs_task_excution.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMReadOnlyAccess"
 }
