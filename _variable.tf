@@ -118,10 +118,6 @@ variable "log_group" {
   description = "Log group name"
 }
 
-variable "container_definitions" {
-  description = "A list of valid [container definitions] provided as a single valid JSON document."
-}
-
 variable "execution_role_arn" {
   description = "The ARN of IAM role that allows your Amazon ECS container execution."
 }
