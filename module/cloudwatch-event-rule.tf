@@ -9,7 +9,7 @@ module "ecs-schdule-task" {
   task_count            = local.workspace["task_count"]
   task_role_arn         = local.workspace["task_role_arn"]
   repository_name       = data.aws_ecr_repository.selected.repository_url
-  container_definitions = file("test.json")
+  container_definitions = file("task-definition.tpl.json")
   cluster_name          = local.workspace["cluster_name"]
   log_group             = "${local.workspace["task_family_name"]}"
 }
