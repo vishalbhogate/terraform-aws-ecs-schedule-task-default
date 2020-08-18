@@ -4,7 +4,7 @@ variable "name" {
 
 variable "task_role_arn" {
   default     = ""
-  description = "The ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services. "
+  description = "The ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services."
 }
 
 variable "schedule_expression" {
@@ -120,4 +120,8 @@ variable "log_group" {
 
 variable "container_definitions" {
   description = "A list of valid [container definitions] provided as a single valid JSON document."
+}
+
+variable "execution_role_arn" {
+  description = "The ARN of IAM role that allows your Amazon ECS container execution."
 }
