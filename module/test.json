@@ -1,28 +1,46 @@
 [
     {
-      "name": "ms-crm-queue",
-      "image": "904761875964.dkr.ecr.ap-southeast-2.amazonaws.com/services/crm:latest",
-      "cpu": 512,
-      "memory": 512,
-      "essential": true,
-      "portMappings": [
+        "name": "ms-crm-queue",
+        "image": "904761875964.dkr.ecr.ap-southeast-2.amazonaws.com/services/crm:latest",
+        "cpu": 512,
+        "memory": 1024,
+        "essential": true,
+        "portMappings": [
             {
-            "containerPort": 80,
-            "hostPort": 80,
-            "protocol": "tcp"
+            "containerPort": 80
             }
         ],
-        "entryPoint": ["php"],
-        "command": ["/var/www/html/bin/scheduler.php"],
-        "logConfiguration": 
-        {
+        "logConfiguration": {
             "logDriver": "awslogs",
-            "options": 
-            {
-                "awslogs-group": "/ecs/services/crm",
-                "awslogs-region": "ap-southeast-2",
-                "awslogs-stream-prefix": "ms-crm-queue"
+            "options": {
+            "awslogs-group": "/ecs/service/crm",
+            "awslogs-region": "ap-southeast-2",
+            "awslogs-stream-prefix": "app"
             }
-        }
+        },
+        "environment": [
+            {
+            "name": "APP_NAME",
+            "value": "brighte-ms-crm"
+            },
+            {
+            "name": "APP_LOG_PATH",
+            "value": "php://stdout"
+            },
+            {
+            "name": "URL_PREFIX",
+            "value": "/v1/crm"
+            },
+            {
+            "name": "MAILTO",
+            "value": "support+${AWS_ENV}@brighte.com.au"
+            }
+        ],
+        "secrets": [
+            {
+            "name": "APP_URL",
+            "valueFrom": "arn:aws:ssm:ap-southeast-2:904761875964:parameter/app/uat/ms/APP_URL"
+            }
+        ]
     }
 ]

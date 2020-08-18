@@ -117,3 +117,7 @@ variable "cloudwatch_logs_retention" {
 variable "log_group" {
   description = "Log group name"
 }
+
+variable "container_definitions" {
+  description = "A list of valid [container definitions] provided as a single valid JSON document."
+}
