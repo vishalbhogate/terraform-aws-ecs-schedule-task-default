@@ -24,6 +24,7 @@ variable "task_definition_arn" {
 }
 
 variable "subnet_ids" {
+  default = [""]
   description = "The subnets associated with the task or service."
 }
 
