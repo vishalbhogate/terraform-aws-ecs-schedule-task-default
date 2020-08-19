@@ -1,10 +1,39 @@
 resource aws_ecs_task_definition "ecs" {
-  family                   = var.name
-  execution_role_arn       = aws_iam_role.ecs_task_excution.arn
-  task_role_arn            = try(var.task_role_arn, null)
-  network_mode             = var.network_mode
-  cpu                      = var.cpu
-  memory                   = var.memory
-  requires_compatibilities = var.requires_compatibilities
-  container_definitions    = var.container_definitions
+  count  = var.image == "" ? 1 : 0
+  family = "${var.cluster_name}-${var.name}"
+
+  execution_role_arn = var.task_role_arn
+  task_role_arn      = var.task_role_arn
+
+  requires_compatibilities = [var.launch_type]
+
+  network_mode = var.launch_type == "FARGATE" ? "awsvpc" : var.network_mode
+  cpu          = var.launch_type == "FARGATE" ? var.cpu : null
+  memory       = var.launch_type == "FARGATE" ? var.memory : null
+
+  container_definitions = <<EOT
+[
+  {
+    "name": "${var.name}",
+    "image": "${var.image}",
+    "cpu": ${var.cpu},
+    "memory": ${var.memory},
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": ${var.container_port}
+      }
+    ],
+    "log_configuration": {
+      "log_driver": "awslogs",
+      "options": {
+          "awslogs-group": "${aws_cloudwatch_log_group.default.arn}",
+          "awslogs-region": "${data.aws_region.current.name}",
+          "awslogs-stream-prefix": "app"
+      }
+    }
+  }
+]
+EOT
+
 }
