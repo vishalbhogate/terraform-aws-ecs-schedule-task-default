@@ -21,7 +21,7 @@ resource aws_cloudwatch_event_target "ecs" {
     task_definition_arn = var.task_definition_arn
 
     network_configuration {
-      subnets          = var.private_subnets
+      subnets          = var.subnet_ids
       security_groups  = var.security_groups
       assign_public_ip = var.assign_public_ip
     }

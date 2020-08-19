@@ -23,7 +23,7 @@ variable "task_definition_arn" {
   description = "The ARN of the task definition to use if the event target is an Amazon ECS cluster."
 }
 
-variable "private_subnets" {
+variable "subnet_ids" {
   description = "The subnets associated with the task or service."
 }
 
