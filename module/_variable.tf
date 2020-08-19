@@ -2,8 +2,7 @@ locals {
   env = {
     default = {
       cluster_name        = "microservices-cluster"
-      name                = "uat"
-      task_family_name    = "ms-crm-queue"
+      name                = "ms-crm-queue"
       security_group_name = "ms-crm-sg"
       schedule_expression = "cron(0/3 * * * ? *)"
       task_count          = "1"
@@ -12,9 +11,8 @@ locals {
       aws_role            = "AdminRoleForOrganizations"
       task_role_arn       = "arn:aws:iam::904761875964:role/ECSTaskSQSRole"
       repository_name     = "services/crm"
-      entry_point         = "php"
-      command             = "/var/www/html/bin/scheduler.php"
       awslogs_group       = "/ecs/services/crm"
+      env_name            = "uat"
     }
   }
 

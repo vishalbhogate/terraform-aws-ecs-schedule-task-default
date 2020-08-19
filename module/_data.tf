@@ -6,7 +6,7 @@ data aws_ecs_cluster "ecs_cluster" {
 data aws_vpc "selected" {
   filter {
     name   = "tag:Name"
-    values = ["${local.workspace["name"]}-VPC"]
+    values = ["${local.workspace["env_name"]}-VPC"]
   }
 }
 
