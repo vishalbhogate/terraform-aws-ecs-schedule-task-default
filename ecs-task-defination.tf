@@ -1,5 +1,5 @@
 resource aws_ecs_task_definition "ecs" {
-  count  = var.image == "" ? 1 : 0
+  count  = var.image != "" ? 1 : 0
   family = "${var.cluster_name}-${var.name}"
 
   execution_role_arn = var.task_role_arn
